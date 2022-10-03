@@ -28,7 +28,7 @@ Gosu::Color Foreground_object::get_color() const
 {
 	return o_color;
 }
-void Foreground_object::set_color(Gosu::Color new_Color)
+void Foreground_object::set_color(int new_Color)
 {
 	o_color = new_Color;
 	return;
@@ -39,4 +39,20 @@ Foreground_object::Foreground_object()
 	position_y = 100;
 	o_color = 0xFFFFFFFF;
 	movement_speed = 1;
+}
+
+Foreground_object::Foreground_object(int new_x, int new_y)
+{
+	position_x = new_x;
+	position_y = new_y;
+	o_color = 0xFFFFFFFF;
+	movement_speed = 1;
+}
+
+Foreground_object::Foreground_object(int new_x, int new_y, int n_color, int n_speed)
+{
+	position_x = new_x;
+	position_y = new_y;
+	o_color = n_color;
+	movement_speed = n_speed;
 }
