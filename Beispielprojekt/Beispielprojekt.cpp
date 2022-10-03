@@ -1,6 +1,6 @@
 #include <Gosu/Gosu.hpp>
 #include <Gosu/AutoLink.hpp>
-
+#include "Foreground_Object.h"
 
 class GameWindow : public Gosu::Window
 {

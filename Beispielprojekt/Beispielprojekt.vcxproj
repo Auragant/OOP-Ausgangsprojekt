@@ -169,13 +169,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Beispielprojekt.cpp" />
-    <ClCompile Include="Forground objekt.cpp" />
+    <ClCompile Include="Foreground_Object.cpp" />
+    <ClCompile Include="Player_Object.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="rakete.png" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Forground objekt.h" />
+    <ClInclude Include="Foreground_Object.h">
+      <DeploymentContent>false</DeploymentContent>
+    </ClInclude>
+    <ClInclude Include="Player_Object.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

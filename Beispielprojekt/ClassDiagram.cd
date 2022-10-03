@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="GameWindow">
+    <Position X="3.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAIAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Beispielprojekt.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Foreground_object">
+    <Position X="0.75" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAIgAAAAAgAAIAAAAARAAAAAAAAMAACAAAgAAAA=</HashCode>
+      <FileName>Foreground_Object.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player_Object">
+    <Position X="1" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAIAEAgBAAAAAAAAAAEAAAABAAAAAA=</HashCode>
+      <FileName>Player_Object.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

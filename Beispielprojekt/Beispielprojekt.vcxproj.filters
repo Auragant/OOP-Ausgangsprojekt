@@ -18,8 +18,11 @@
     <ClCompile Include="Beispielprojekt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Forground objekt.cpp">
-      <Filter>Header Files</Filter>
+    <ClCompile Include="Foreground_Object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player_Object.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -28,8 +31,14 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Forground objekt.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Foreground_Object.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="Player_Object.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
