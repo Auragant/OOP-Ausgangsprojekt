@@ -7,7 +7,7 @@ int Foreground_object::get_position_x() const
 	return position_x;
 }
 
-//Set x-Axis Position as int Value
+//Set x-Axis Position 
 void Foreground_object::set_position_x(int new_position)
 {
 	position_x = new_position;
@@ -19,11 +19,15 @@ int Foreground_object::get_position_y() const
 {
 	return position_y;
 }
+
+//Set y-Axis Position 
 void Foreground_object::set_position_y(int new_position)
 {
 	position_y = new_position;
 	return;
 }
+
+//Get the color of the object
 Gosu::Color Foreground_object::get_color() const
 {
 	return o_color;

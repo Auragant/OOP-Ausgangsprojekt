@@ -2,13 +2,13 @@
 #include <Gosu/AutoLink.hpp>
 #include "Foreground_Object.h"
 #include "Player_Object.h"
-
+#include "GameWindow.h"
+/*
 class GameWindow : public Gosu::Window
 {
 public:
 
-	GameWindow()
-		: Window(800, 600)
+	GameWindow() : Window(800, 600)
 	{
 		set_caption("Gosu Tutorial mit Git");
 	}
@@ -30,6 +30,7 @@ public:
 	{
 	}
 };
+*/
 
 // C++ Hauptprogramm
 int main()

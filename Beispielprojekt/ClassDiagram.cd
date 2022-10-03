@@ -1,24 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
-  <Class Name="GameWindow">
-    <Position X="5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAgAAAAAAAAIAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
-      <FileName>Beispielprojekt.cpp</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Player_Object">
-    <Position X="1.5" Y="4.5" Width="2" />
+    <Position X="0.5" Y="4.5" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgAAIAEAgBAAAAAAAAAAEAAAABAAAAAA=</HashCode>
+      <HashCode>BAAAAAgAAAAAgTM6gEAgBQCEQACAAAAAFECABAEABAg=</HashCode>
       <FileName>Player_Object.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Foreground_object">
-    <Position X="1" Y="0.5" Width="3" />
+    <Position X="0.5" Y="0.5" Width="3" />
     <TypeIdentifier>
       <HashCode>AAEAAAIgAAAAAgAAIAAAAARAAAAAAAAMAACAAAgAAAA=</HashCode>
       <FileName>Foreground_Object.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Point" Collapsed="true">
+    <Position X="4.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAEAAAAAAAAAABAAECAAAAAAAAAIAA=</HashCode>
+      <FileName>Point.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Border" Collapsed="true">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAQEAAAAAAAAAACAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Border.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameWindow">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAIAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>GameWindow.h</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

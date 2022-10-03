@@ -2,15 +2,18 @@
 #include "Foreground_Object.h"
 #include <Gosu/Gosu.hpp>
 #include <Gosu/AutoLink.hpp>
+#include "Point.h"
+#include "Border.h"
 
-//Declaration of Player_Object 
+//Declaration of Player_Object
 
 class Player_Object : public virtual Foreground_object
 {
 public:
-	void draw_player(int SHP);			//Just for the display of the Player
+	void draw_player();			//Just for the display of the Player
 	void update_player();				//Cyclic update of Player
-	void math_to_border();				//Giving the borders of the Object as 4 integers.
+	void update_position();
+	Border math_to_border();				// *This function should return the borders of the Player-Object as 4 integers
 	void math_to_points();				//Giving the significant points.
 	int get_HP();
 	void set_HP(int nHP);
@@ -31,7 +34,13 @@ private:
 	int hitPoints = 3;
 	int damage = 1;
 	int multiplier = 1; //Is a Multiplier needed for anything?
-	int shape = 1;		//Shape is a special function, x <= 0 -> image ; x = 1 -> triangle ; x > 1 -> quad
+	int shape = 1;		//Shape is a special function, x <= 0 -> image ; x = 1 -> triangle
 	int sizeX = 10;		//Size in X-Dimension
-	int sizeY = 10;
+	int sizeY = 10;		//Size in Y-Dimension
+	int ZPos = 5;		//Layer of Gosu - Not meant to be changed...
+	Point P1;
+	Point P2;
+	Point P3;
+	Border localBorder;
+	
 };

@@ -168,18 +168,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Beispielprojekt.cpp" />
+    <ClCompile Include="GameWindow.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Border.cpp" />
     <ClCompile Include="Foreground_Object.cpp" />
     <ClCompile Include="Player_Object.cpp" />
+    <ClCompile Include="Point.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="rakete.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Border.h" />
     <ClInclude Include="Foreground_Object.h">
       <DeploymentContent>false</DeploymentContent>
     </ClInclude>
+    <ClInclude Include="GameWindow.h" />
     <ClInclude Include="Player_Object.h" />
+    <ClInclude Include="Point.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

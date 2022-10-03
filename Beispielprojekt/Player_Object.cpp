@@ -1,5 +1,9 @@
 ﻿#include "Player_Object.h"
+#include <algorithm>
+
+using namespace std;
 using namespace Gosu;
+
 //Definition of Player_Object
 
 /*
@@ -7,10 +11,16 @@ using namespace Gosu;
  * SHP describes the Shape of the Player.
  * x <= 0 -> image
  * x = 1 -> triangle
- * x > 1 -> quad
  */
-void Player_Object::draw_player(int SHP)
+void Player_Object::draw_player()
 {
+	//Beispielprojekt.GameWindow().graphics().draw_triangle(
+
+	//	P1.get_x(), P1.get_y(), get_color(),
+		//P2.get_x(), P2.get_y(), get_color(),
+		//P3.get_x(), P3.get_y(), get_color(),
+		//ZPos
+	//);
 	return;
 }
 
@@ -20,7 +30,13 @@ void Player_Object::draw_player(int SHP)
  */
 void Player_Object::update_player()
 {
+	draw_player();
+
 	return;
+}
+
+void Player_Object::update_position()
+{
 }
 
 /*
@@ -30,14 +46,38 @@ void Player_Object::update_player()
  *Upper Y (Right)
  *Lower Y (Left)
  */
-void Player_Object::math_to_border()
+Border Player_Object::math_to_border()
 {
-	return;
+	double uX;
+	double lX;
+	double uY;
+	double LY;
+
+	double x1 = P1.get_x();
+	double x2 = P2.get_x();
+	double x3 = P3.get_x();
+	double y1 = P1.get_y();
+	double y2 = P2.get_y();
+	double y3 = P3.get_y();
+
+	uX = max(x1, x2);
+	uX = max(uX, x3);
+
+	lX = min(x1, x2);
+	lX = min(uX, x3);
+
+	return Border();
 }
 
+/*
+ *This function should return the borders of the Player-Object as 3 points
+ *Upper X (Up)
+ *Lower X (Down)
+ *Upper Y (Right)
+ *Lower Y (Left)
+ */
 void Player_Object::math_to_points()
 {
-	
 }
 
 #pragma region GET/SET - DO NOT OPEN, unless necessary
