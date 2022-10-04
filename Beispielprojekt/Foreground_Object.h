@@ -3,7 +3,10 @@
 
 //Just declaration of the Class
 
-class Foreground_object 
+#ifndef FOREGROUND_OBJECT_H_
+#define FOREGROUND_OBJECT_H_
+
+class Foreground_object
 {
 public:
 	int get_position_x() const;					//Get x-Axis Position as Int Value
@@ -21,3 +24,5 @@ private:
 	Gosu::Color o_color;						//Color of the Object
 	int movement_speed;							//Movement Speed of the Object. 0 for no Movement
 };
+
+#endif // !FOREGROUND_OBJECT_H_

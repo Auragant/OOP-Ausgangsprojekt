@@ -2,6 +2,9 @@
 #include <Gosu/Gosu.hpp>
 using namespace Gosu;
 
+#ifndef GAMEWINDOW_H_
+#define GAMEWINDOW_H_
+
 class GameWindow : public Window
 {
 public:
@@ -28,3 +31,5 @@ public:
 	{
 	}
 };
+
+#endif //GAMEWINDOW_H_
