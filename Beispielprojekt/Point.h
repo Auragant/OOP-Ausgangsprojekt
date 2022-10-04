@@ -1,5 +1,8 @@
 ﻿#pragma once
 
+#ifndef POINT_H_
+#define POINT_H_
+
 /*
  * Simple Structure to describe points in our game
  * Not commented
@@ -16,3 +19,5 @@ private:
 	double pX;
 	double pY;
 };
+
+#endif // !POINT_H_

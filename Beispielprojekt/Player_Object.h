@@ -5,6 +5,9 @@
 #include "Point.h"
 #include "Border.h"
 
+#ifndef PLAYER_OBJECT_H_
+#define PLAYER_OBJECT_H_
+
 //Declaration of Player_Object
 
 class Player_Object : public virtual Foreground_object
@@ -42,5 +45,9 @@ private:
 	Point P2;
 	Point P3;
 	Border localBorder;
-	
 };
+
+#endif // !PLAYER_OBJECT_H_
+
+
+
