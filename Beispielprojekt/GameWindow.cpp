@@ -10,16 +10,17 @@ void GameWindow::draw() {
 		200, 100, Gosu::Color::GREEN,
 		0.0
 	);
+	const Game_Input instruction = input_updater();
+
+	draw_player(instruction);
 	return;
 }
 
 void GameWindow::update()
 {
 	Window::update();
-
-	Game_Input instruction = input_updater();
-	
-	draw_player(instruction);
+	draw();
+		return;
 }
 
 void GameWindow::draw_player(Game_Input instru)

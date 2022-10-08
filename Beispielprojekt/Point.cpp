@@ -16,7 +16,6 @@ void Point::set_Point(double x, double y)
 
 Point::Point()
 {
-	return;
 }
 
 Point::Point(double x, double y)
