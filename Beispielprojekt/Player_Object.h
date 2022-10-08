@@ -12,15 +12,18 @@
 #include <Gosu/AutoLink.hpp>
 #include "Point.h"
 #include "Border.h"
+#include "Game_Input.h"
 
-#ifndef PLAYER_OBJECT_H_
-#define PLAYER_OBJECT_H_
+//#ifndef PLAYER_OBJECT_H_
+//#define PLAYER_OBJECT_H_
 
 class Player_Object : public virtual Foreground_object
 {
 public:
 	//void draw_player();			//Just for the display of the Player - DON'T USE, Draw Operation must be done by GameWindow
-	void update_player();				//Cyclic update of Player
+	
+	void update_player(Game_Input input);
+	//Cyclic update of Player
 	void update_position();
 	Border math_to_border();				// *This function should return the borders of the Player-Object as 4 integers
 	void math_to_points();				//Giving the significant points.
@@ -57,7 +60,7 @@ protected:
 	
 };
 
-#endif // !PLAYER_OBJECT_H_
+//#endif // !PLAYER_OBJECT_H_
 
 
 

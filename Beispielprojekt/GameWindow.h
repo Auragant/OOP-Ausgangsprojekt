@@ -24,8 +24,8 @@ public:
 	// Wird 60x pro Sekunde aufgerufen
 	void update() override;
 
-	void draw_player();
-	void input_updater();
+	void draw_player(Game_Input instru);
+	Game_Input input_updater();
 private:
 	Player_Object player = Player_Object(100,400,0xFFFFFF, 2);
 

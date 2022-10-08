@@ -2,7 +2,6 @@
 
 Border::Border()
 {
-		return;
 }
 
 Border::Border(double uXd, double lXd, double uYd, double lYd)

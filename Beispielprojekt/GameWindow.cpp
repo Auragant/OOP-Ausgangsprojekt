@@ -1,6 +1,8 @@
 ﻿#include "GameWindow.h"
 #include <Gosu/Gosu.hpp>
 #include <Gosu/AutoLink.hpp>
+#include "Game_Input.h"
+using namespace Gosu;
 
 void GameWindow::draw() {
 	graphics().draw_line(
@@ -14,12 +16,15 @@ void GameWindow::draw() {
 void GameWindow::update()
 {
 	Window::update();
-	draw_player();
+
+	Game_Input instruction = input_updater();
+	
+	draw_player(instruction);
 }
 
-void GameWindow::draw_player()
+void GameWindow::draw_player(Game_Input instru)
 {
-	player.update_player();
+	player.update_player(instru);
 	graphics().draw_triangle(
 		player.P1.get_x(), player.P1.get_y(), player.get_color(),
 		player.P2.get_x(), player.P2.get_y(), player.get_color(),
@@ -27,16 +32,21 @@ void GameWindow::draw_player()
 		player.get_ZPos());
 }
 
-void GameWindow::input_updater()
+Game_Input GameWindow::input_updater()
 {
+	Game_Input instru(0,0,0);
+
 	if (input().down(KB_A) &&  !input().down(KB_D))
 	{
-		//Move Left
-		//x--
+		instru.Left = true;
 	}
 	else if (input().down(KB_D) && !input().down(KB_A))
 	{
-		//Move Right
-		//x++
+		instru.Right = true;
 	}
+	if (input().down(KB_SPACE))
+	{
+		instru.Shoot = true;
+	}
+	return instru;
 }

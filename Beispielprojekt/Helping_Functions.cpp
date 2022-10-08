@@ -11,7 +11,7 @@
 
 using namespace std;
 
-double max3(auto a, auto b, auto c)
+double max3(double a, double b, double c)
 {
 	double ret = max(a, b);
 	ret = max(ret, c);
@@ -19,7 +19,7 @@ double max3(auto a, auto b, auto c)
 	return ret;
 }
 
-double min3(auto a, auto b, auto c)
+double min3(double a, double b, double c)
 {
 	double ret = min(a, b);
 	ret = min(ret, c);

@@ -1,5 +1,4 @@
 ﻿#include "Player_Object.h"
-#include "GameWindow.h"
 #include "Helping_Functions.h"
 #include <Gosu/Gosu.hpp>
 #include "Game_Input.h"
@@ -36,10 +35,7 @@ void Player_Object::draw_player()
 void Player_Object::update_player(Game_Input input	)
 {
 
-	if (Input().down(KB_A) && !Input().down(KB_D))
-	{
-		set_position_y(get_position_y()-1) ;
-	}
+	
 
 	return;
 }
@@ -62,19 +58,19 @@ Border Player_Object::math_to_border()
 	double uY;
 	double lY;
 
-	double x1 = P1.get_x();
-	double x2 = P2.get_x();
-	double x3 = P3.get_x();
-	double y1 = P1.get_y();
-	double y2 = P2.get_y();
-	double y3 = P3.get_y();
+	const double x1 = P1.get_x();
+	const double x2 = P2.get_x();
+	const double x3 = P3.get_x();
+	const double y1 = P1.get_y();
+	const double y2 = P2.get_y();
+	const double y3 = P3.get_y();
 
 	uX = max3(x1, x2, x3);
 	lX = min3(x1, x2, x3);
 	uY = max3(y1, y2, y3);
 	lY = min3(y1, y2, y3);
 
-	Border b(uX, lX, uY, lY);
+	const Border b(uX, lX, uY, lY);
 
 	return b;
 }
