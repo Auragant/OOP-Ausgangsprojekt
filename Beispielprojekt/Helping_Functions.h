@@ -1,5 +1,5 @@
 #pragma once
 
 
-double max3(auto a, auto b, auto c);
-double min3(auto a, auto b, auto c);
+double max3(double a, double b, double c);
+double min3(double a, double b, double c);

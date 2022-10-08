@@ -12,7 +12,7 @@ class Point
 public:
 	double get_x();
 	double get_y();
-	void set_Point(auto x, auto y);
+	void set_Point(double x, double y);
 	Point();
 	Point(double x, double y);
 private:

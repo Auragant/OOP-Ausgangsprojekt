@@ -8,7 +8,7 @@ double Point::get_y()
 {
 	return pY;
 }
-void Point::set_Point(auto x, auto y)
+void Point::set_Point(double x, double y)
 {
 	pX = x;
 	pY = y;
