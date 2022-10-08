@@ -4,6 +4,7 @@
 #include "Player_Object.h"
 #include "GameWindow.h"
 #include "Menu.h"
+
 /*
 class GameWindow : public Gosu::Window
 {
@@ -38,6 +39,6 @@ int main()
 {
 	GameWindow window;
 	window.show();
-	Menu menuWindow;
-	menuWindow.show();
+	//Menu menuWindow;
+	//menuWindow.show();
 }

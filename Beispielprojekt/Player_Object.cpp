@@ -1,5 +1,8 @@
 ﻿#include "Player_Object.h"
-#include <algorithm>
+#include "GameWindow.h"
+#include "Helping_Functions.h"
+#include <Gosu/Gosu.hpp>
+#include "Game_Input.h"
 
 using namespace std;
 using namespace Gosu;
@@ -9,28 +12,34 @@ using namespace Gosu;
 /*
  * This Function draw_Player should draw the player_object
  * SHP describes the Shape of the Player.
+ * Yeah, forget it...
+ * You can't let the Player_Object print itself on GameWindow()
  * x <= 0 -> image
  * x = 1 -> triangle
- */
+
 void Player_Object::draw_player()
 {
-	//Beispielprojekt.GameWindow().graphics().draw_triangle(
+	GameWindow().graphics().draw_triangle(
 
-	//	P1.get_x(), P1.get_y(), get_color(),
-		//P2.get_x(), P2.get_y(), get_color(),
-		//P3.get_x(), P3.get_y(), get_color(),
-		//ZPos
-	//);
+		P1.get_x(), P1.get_y(), get_color(),
+		P2.get_x(), P2.get_y(), get_color(),
+		P3.get_x(), P3.get_y(), get_color(),
+		ZPos
+	);
 	return;
-}
+}*/
 
 /*
  * The update Function should be repeated with every frame.
  * Multi-Threading won't be a thing in this project for the first version
  */
-void Player_Object::update_player()
+void Player_Object::update_player(Game_Input input	)
 {
-	draw_player();
+
+	if (Input().down(KB_A) && !Input().down(KB_D))
+	{
+		set_position_y(get_position_y()-1) ;
+	}
 
 	return;
 }
@@ -51,7 +60,7 @@ Border Player_Object::math_to_border()
 	double uX;
 	double lX;
 	double uY;
-	double LY;
+	double lY;
 
 	double x1 = P1.get_x();
 	double x2 = P2.get_x();
@@ -60,13 +69,14 @@ Border Player_Object::math_to_border()
 	double y2 = P2.get_y();
 	double y3 = P3.get_y();
 
-	uX = max(x1, x2);
-	uX = max(uX, x3);
+	uX = max3(x1, x2, x3);
+	lX = min3(x1, x2, x3);
+	uY = max3(y1, y2, y3);
+	lY = min3(y1, y2, y3);
 
-	lX = min(x1, x2);
-	lX = min(uX, x3);
+	Border b(uX, lX, uY, lY);
 
-	return Border();
+	return b;
 }
 
 /*
@@ -75,9 +85,22 @@ Border Player_Object::math_to_border()
  *Lower X (Down)
  *Upper Y (Right)
  *Lower Y (Left)
+ *Position (x|y) +- size/2
  */
 void Player_Object::math_to_points()
 {
+	int P1x = get_position_x();
+	int P1y = get_position_y() - (sizeY / 2);
+
+	int P2x = get_position_x() - (sizeX / 2);
+	int P2y = get_position_y() + (sizeY / 2);
+
+	int P3x = get_position_x() + (sizeX / 2);
+	int P3y = get_position_y() + (sizeY / 2);
+
+	P1.set_Point(P1x, P1y);
+	P2.set_Point(P2x, P2y);
+	P3.set_Point(P3x, P3y);
 }
 
 #pragma region GET/SET - DO NOT OPEN, unless necessary
@@ -176,6 +199,11 @@ int Player_Object::get_SiY()
 void Player_Object::set_SiY(int nSiY)
 {
 	sizeY = nSiY;
+}
+
+int Player_Object::get_ZPos()
+{
+	return ZPos;
 }
 
 #pragma endregion

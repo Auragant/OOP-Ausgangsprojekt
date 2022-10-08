@@ -20,11 +20,11 @@ class Menu : public Window
 public:
 
 	Gosu::Image Logo;
-	Menu_Window() : Window(800, 600, Logo("logo.png")
+	/*Menu_Window() : Window(800, 600, Logo("logo.png")
 	{
 		set_caption("Space Invaders");
 	}
-
+	*/
 	double x = 0;
 	double y = 0;
 

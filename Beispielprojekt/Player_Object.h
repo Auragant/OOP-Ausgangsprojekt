@@ -1,4 +1,12 @@
-﻿#pragma once
+﻿/*****************************************************************//**
+ * \file   Player_Object.h
+ * \brief  Declaration of Player_Object
+ * 
+ * \author Jan
+ * \date   October 2022
+ *********************************************************************/
+
+#pragma once
 #include "Foreground_Object.h"
 #include <Gosu/Gosu.hpp>
 #include <Gosu/AutoLink.hpp>
@@ -8,12 +16,10 @@
 #ifndef PLAYER_OBJECT_H_
 #define PLAYER_OBJECT_H_
 
-//Declaration of Player_Object
-
 class Player_Object : public virtual Foreground_object
 {
 public:
-	void draw_player();			//Just for the display of the Player
+	//void draw_player();			//Just for the display of the Player - DON'T USE, Draw Operation must be done by GameWindow
 	void update_player();				//Cyclic update of Player
 	void update_position();
 	Border math_to_border();				// *This function should return the borders of the Player-Object as 4 integers
@@ -30,6 +36,10 @@ public:
 	void set_SiX(int nSiX);
 	int get_SiY();
 	void set_SiY(int nSiY);
+	int get_ZPos();
+	Point P1;
+	Point P2;
+	Point P3;
 	Player_Object(int pos_x, int pos_y, int color, int speed);
 	Player_Object(int pos_x, int pos_y, int color, int speed, int HP, int DMG, int MP);
 	Player_Object(int pos_x, int pos_y, int color, int speed, int HP, int DMG, int MP, int SHP, int SX, int SY);
@@ -41,10 +51,10 @@ private:
 	int sizeX = 10;		//Size in X-Dimension
 	int sizeY = 10;		//Size in Y-Dimension
 	int ZPos = 5;		//Layer of Gosu - Not meant to be changed...
-	Point P1;
-	Point P2;
-	Point P3;
+	
 	Border localBorder;
+protected:
+	
 };
 
 #endif // !PLAYER_OBJECT_H_

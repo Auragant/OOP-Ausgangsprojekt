@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <Gosu/Gosu.hpp>
+#include "Player_Object.h"
 using namespace Gosu;
 
 #ifndef GAMEWINDOW_H_
@@ -17,19 +18,17 @@ public:
 	// Wird bis zu 60x pro Sekunde aufgerufen.
 	// Wenn die Grafikkarte oder der Prozessor nicht mehr hinterherkommen,
 	// dann werden `draw` Aufrufe ausgelassen und die Framerate sinkt
-	void draw() override
-	{
-		graphics().draw_line(
-			10, 20, Gosu::Color::RED,
-			200, 100, Gosu::Color::GREEN,
-			0.0
-		);
-	}
+	void draw() override;
+	
 
 	// Wird 60x pro Sekunde aufgerufen
-	void update() override
-	{
-	}
+	void update() override;
+
+	void draw_player();
+	void input_updater();
+private:
+	Player_Object player = Player_Object(100,400,0xFFFFFF, 2);
+
 };
 
 #endif //GAMEWINDOW_H_

@@ -41,7 +41,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -169,11 +169,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GameWindow.cpp" />
+    <ClCompile Include="Game_Input.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Border.cpp" />
     <ClCompile Include="Foreground_Object.cpp" />
     <ClCompile Include="Player_Object.cpp" />
     <ClCompile Include="Point.cpp" />
+    <ClCompile Include="Helping_Functions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="rakete.png" />
@@ -184,8 +186,11 @@
       <DeploymentContent>false</DeploymentContent>
     </ClInclude>
     <ClInclude Include="GameWindow.h" />
+    <ClInclude Include="Game_Input.h" />
+    <ClInclude Include="Helping_Functions.h" />
     <ClInclude Include="Player_Object.h" />
     <ClInclude Include="Point.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

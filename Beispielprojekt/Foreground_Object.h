@@ -1,7 +1,13 @@
-﻿#pragma once
+﻿/*****************************************************************//**
+ * \file	Foreground_Object.h
+ * \brief	Declaration of the Foreground_Object
+ *
+ * \author	Jan
+ * \date	October 2022
+ *********************************************************************/
+#pragma once
 #include "Gosu/Gosu.hpp"
 
-//Just declaration of the Class
 
 #ifndef FOREGROUND_OBJECT_H_
 #define FOREGROUND_OBJECT_H_
