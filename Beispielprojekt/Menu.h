@@ -39,7 +39,7 @@ public:
 			0.0
 		);
 
-		Logo.draw_rot(x, y, 0.0, 0.0, 0.5, 0,5);
+		//Logo.draw_rot(x, y, 0.0, 0.0, 0.5, 0,5);
 	}
 
 	// Wird 60x pro Sekunde aufgerufen
