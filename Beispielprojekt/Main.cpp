@@ -12,26 +12,26 @@ struct Asteorid {
     const int AsteroidLaenge = 30;
     const int AsteroidPos = 1;
     const Gosu::Color AsteroidFarbe = Gosu::Color::GRAY;
-    double AsteroidX;
     double AsteroidY;
+    double AsteroidX;
     bool hit = false;
    
 };
 
 struct Schuss
 {
-    const int SchussBreite = 10;
-    const int SchussHoehe = 3;
+    const int SchussBreite = 3;
+    const int SchussHoehe = 10;
     const int SchussPos = 1;
     const Gosu::Color SchussFarbe = Gosu::Color::RED;
-    double SchussX;
     double SchussY;
+    double SchussX;
     bool existent = true;
 };
 Schuss neuerSchuss(double x,double y) {
     Schuss st;
-    st.SchussX = x;
     st.SchussY = y;
+    st.SchussX = x;
     return st;
     
 }
@@ -50,8 +50,8 @@ class GameWindow : public Gosu::Window
     int spielAuswahl = 0;
     double mausX;
     double mausY;
-    const double RaumschiffX = 50;
-    double  RaumschiffY =400;
+    const double RaumschiffY = 550;
+    double  RaumschiffX =500;
     bool spielstatus = false;
     bool initial_start;
     bool gestorben;
@@ -80,7 +80,7 @@ public:
     void restart_space() {
         Asteroiden.clear(); 
         schuesse.clear();
-        RaumschiffY = 400;
+        RaumschiffX = 500;
         SpaceScore = 0;
         SpaceSpeed = 3;
         gestorben = false;
@@ -92,10 +92,10 @@ public:
 
     }
     void erstelleAsteroid(vector<Asteorid>& AstVect) {
-        double y = Gosu::random(0, 800);
+        double x = Gosu::random(30, 970);
         Asteorid ast;
-        ast.AsteroidX = 1000;
-        ast.AsteroidY = y;
+        ast.AsteroidY = 0;
+        ast.AsteroidX = x;
         AstVect.push_back(ast);
     }  
     void AstInRange() {                 
@@ -103,13 +103,13 @@ public:
         vector<Schuss> hilfSchuss;
         bool raus = false;
         bool AstRaus = false;  
-        for (int ast = 0; ast < Asteroiden.size(); ast++) {
-            if (Asteroiden.at(ast).AsteroidX <= RaumschiffX + 30 && Asteroiden.at(ast).AsteroidY >= RaumschiffY - 40 && Asteroiden.at(ast).AsteroidY <= RaumschiffY + 40) {
+        for (int ast = 0; ast < Asteroiden.size(); ast++) {    
+            if (Asteroiden.at(ast).AsteroidY >= RaumschiffY - 30 && Asteroiden.at(ast).AsteroidY <= 560 && Asteroiden.at(ast).AsteroidX - 40 <= RaumschiffX  && Asteroiden.at(ast).AsteroidX + 40 >= RaumschiffX ) {
                 gestorben = true;
                 Asteroiden.at(ast).hit = true;
                 break;
             }
-            else if (Asteroiden.at(ast).AsteroidX <= 0) {
+            else if (Asteroiden.at(ast).AsteroidX >= 600) {
                 ScoreNichtZerstoert++;
                 Space_Speed_increase = true;
                 Asteroiden.at(ast).hit = true;
@@ -122,11 +122,8 @@ public:
                         Asteroiden.at(ast).hit = true;
                         schuesse.at(st).existent = false;
                     }                      
-                    else if (schuesse.at(st).SchussX >= 900.0) {
+                    else if (schuesse.at(st).SchussX <= 0) {
                         schuesse.at(st).existent = false;
-                    }
-                    else {
-
                     }
                 }
             }
@@ -162,19 +159,20 @@ public:
     }
     void SchussBewegen() {
         for (Schuss& st : schuesse) {
-            st.SchussX += schussspeed;
+            st.SchussY -= schussspeed;
         }
     }
     void AsteroidenBewegen() {
-        for (Asteorid& ast : Asteroiden) {
-            ast.AsteroidX = ast.AsteroidX - SpaceSpeed;
-
-            if ((RaumschiffX <= (ast.AsteroidX + (ast.AsteroidBreite / 2)) && RaumschiffX >= (ast.AsteroidX - (ast.AsteroidBreite / 2))) &&
-                (RaumschiffY <= (ast.AsteroidY - (ast.AsteroidLaenge / 2)) && RaumschiffY >= (ast.AsteroidY + (ast.AsteroidLaenge / 2))))
+        for (Asteorid& ast : Asteroiden)
+        {
+           ast.AsteroidY = ast.AsteroidY + SpaceSpeed; 
+           if ((RaumschiffX <= (ast.AsteroidX + (ast.AsteroidBreite / 2)) && RaumschiffX >= (ast.AsteroidX - (ast.AsteroidBreite / 2))) &&
+              (RaumschiffY <= (ast.AsteroidY - (ast.AsteroidLaenge / 2)) && RaumschiffY >= (ast.AsteroidY + (ast.AsteroidLaenge / 2))))
             {
                 gestorben = true;
                 break;
             }
+            
         }
     }
   
@@ -247,11 +245,11 @@ public:
                 AsteroidenAnzahl--;
                 schussZahl++;
                 
-                if (input().down(Gosu::Button::KB_UP)) {
-                    RaumschiffY -= (SpaceSpeed + 2);
+                if (input().down(Gosu::Button::KB_LEFT)) {
+                    RaumschiffX -= (SpaceSpeed + 2);
                 }
-                else if (input().down(Gosu::Button::KB_DOWN)) {
-                    RaumschiffY += SpaceSpeed + 2;
+                else if (input().down(Gosu::Button::KB_RIGHT)) {
+                    RaumschiffX += SpaceSpeed + 2;
                 }
                 if (AsteroidenAnzahl <= 1) {
                     AsteroidenAnzahl = 30;
@@ -275,7 +273,7 @@ public:
             else if (mausX >= 900 && mausX <= 1000 && mausY >= 0 && mausY <= 100 && input().down(Gosu::Button::MS_LEFT)) {               //Spiel beenden
                 exit(3);
             }
-            if (RaumschiffY > 600 || RaumschiffY< 0)              // Abfrage, ob man außerhalb den Bildschirms geflogen ist falls ja Game Over
+            if (RaumschiffX > 1000 || RaumschiffX< 0)              // Abfrage, ob man außerhalb den Bildschirms geflogen ist falls ja Game Over
                 gestorben = true;
         }
     }
