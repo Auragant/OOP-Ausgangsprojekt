@@ -104,7 +104,7 @@ public:
         bool raus = false;
         bool AstRaus = false;  
         for (int ast = 0; ast < Asteroiden.size(); ast++) {    
-            if (Asteroiden.at(ast).AsteroidY >= RaumschiffY - 30 && Asteroiden.at(ast).AsteroidY <= 560 && Asteroiden.at(ast).AsteroidX - 40 <= RaumschiffX  && Asteroiden.at(ast).AsteroidX + 40 >= RaumschiffX ) {
+            if (Asteroiden.at(ast).AsteroidY >= RaumschiffY - 30 && Asteroiden.at(ast).AsteroidY <= 560 && Asteroiden.at(ast).AsteroidX - 20 <= RaumschiffX  && Asteroiden.at(ast).AsteroidX + 80 >= RaumschiffX ) {
                 gestorben = true;
                 Asteroiden.at(ast).hit = true;
                 break;
