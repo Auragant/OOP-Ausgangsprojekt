@@ -56,7 +56,7 @@ class GameWindow : public Gosu::Window
     bool initial_start;
     bool gestorben;
     int SpaceScore;
-    int rotationSpace = 270;
+    int rotationSpace = 0;
     vector<Asteorid> Asteroiden;
     vector<Schuss> schuesse;
     double SpaceSpeed = 3;
@@ -104,7 +104,7 @@ public:
         bool raus = false;
         bool AstRaus = false;  
         for (int ast = 0; ast < Asteroiden.size(); ast++) {    
-            if (Asteroiden.at(ast).AsteroidY >= RaumschiffY - 30 && Asteroiden.at(ast).AsteroidY <= 560 && Asteroiden.at(ast).AsteroidX - 20 <= RaumschiffX  && Asteroiden.at(ast).AsteroidX + 80 >= RaumschiffX ) {
+            if (Asteroiden.at(ast).AsteroidY >= RaumschiffY - 30 && Asteroiden.at(ast).AsteroidY <= 560 && Asteroiden.at(ast).AsteroidX - 10 <= RaumschiffX  && Asteroiden.at(ast).AsteroidX + 70 >= RaumschiffX ) {
                 gestorben = true;
                 Asteroiden.at(ast).hit = true;
                 break;
@@ -192,10 +192,7 @@ public:
             anzeige_score_Space.draw_text_rel("Score: " + score, 0, 0, 2, 0, 0, 1, 1, Gosu::Color::GREEN);
 
             if (SpaceSpielen) {
-                Raumschiff.draw_rot(RaumschiffX, RaumschiffY, 2, rotationSpace
-                    , 0.5, 0.5,
-                    0.1, 0.1
-                );
+                Raumschiff.draw_rot(RaumschiffX, RaumschiffY, 2, rotationSpace, 0.5, 0.5,0.1, 0.1);
                 for (int ast = 0; ast < Asteroiden.size(); ast++) {
                     if (Asteroiden.at(ast).hit == false) {
                         graphics().draw_rect(Asteroiden.at(ast).AsteroidX, Asteroiden.at(ast).AsteroidY, Asteroiden.at(ast).AsteroidLaenge, Asteroiden.at(ast).AsteroidBreite, Asteroiden.at(ast).AsteroidFarbe, Asteroiden.at(ast).AsteroidPos);
@@ -209,9 +206,10 @@ public:
                     }
                 }
             }
-            if (gestorben) {//!SpaceSpielen &&               
-                anzeige_restart_Space.draw_text_rel("Restart", 500, 300, 2, 0.5, 0.5, 2, 2, Gosu::Color::GREEN);
-                exitgame.draw_text_rel("Exit", 950, 20, 2, 0.5, 0.5, 1, 1, Gosu::Color::RED);
+            if (gestorben) {
+                graphics().draw_quad(400, 270, Gosu::Color::RED, 400, 330, Gosu::Color::RED, 600, 330, Gosu::Color::RED, 600, 270, Gosu::Color::RED, 1);
+                anzeige_restart_Space.draw_text_rel("Restart", 500, 300, 2, 0.5, 0.5, 2, 2, Gosu::Color::BLACK);
+                exitgame.draw_text_rel("Exit", 970, 20, 2, 0.5, 0.5, 1, 1, Gosu::Color::RED);
             }
         }
        
@@ -245,12 +243,15 @@ public:
                 AsteroidenAnzahl--;
                 schussZahl++;
                 
-                if (input().down(Gosu::Button::KB_LEFT)) {
+                if (input().down(Gosu::Button::KB_LEFT) || input().down(Gosu::Button::KB_A)) 
+                {
                     RaumschiffX -= (SpaceSpeed + 2);
                 }
-                else if (input().down(Gosu::Button::KB_RIGHT)) {
+                else if (input().down(Gosu::Button::KB_RIGHT) || input().down(Gosu::Button::KB_D)) 
+                {
                     RaumschiffX += SpaceSpeed + 2;
                 }
+                
                 if (AsteroidenAnzahl <= 1) {
                     AsteroidenAnzahl = 30;
                     erstelleAsteroid(Asteroiden);
@@ -274,7 +275,7 @@ public:
                 exit(3);
             }
             if (RaumschiffX > 1000 || RaumschiffX< 0)              // Abfrage, ob man außerhalb den Bildschirms geflogen ist falls ja Game Over
-                gestorben = true;
+            gestorben = true;
         }
     }
 };
