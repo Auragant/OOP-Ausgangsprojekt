@@ -44,7 +44,7 @@ class GameWindow : public Gosu::Window
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 public:
-    GameWindow() : Window(1000, 600), Raumschiff("raumschiff1.png"),SpaceHintergrund("weltraum.png"), Asteroid("asteroid2.png"), Logo("logo.png")
+    GameWindow() : Window(1000, 600), Raumschiff("raumschiff.png"),SpaceHintergrund("weltraum.png"), Asteroid("asteroid.png"), Logo("logo.png")
     {
         set_caption("Space Invaders");
     }
@@ -158,7 +158,7 @@ public:
             Logo.draw(40, 0, 1, 1.0, 1.0);                                                                          // Menü beim Start des Spiels  
             auswahlSpaceInvaders.draw_text_rel("Spielen", 500, 450, 1, 0.5, 0.5, 1, 1, Gosu::Color::WHITE);
             exitgame.draw_text_rel("Beenden", 500, 500, 1, 0.5, 0.5, 1, 1, Gosu::Color::WHITE);
-            entwickler.draw_text_rel(" Adrian Belz, Louis Rosewich, Jan Scharschmidt", 200, 590, 1, 0.5, 0.5, 1, 1, Gosu::Color::WHITE);
+            entwickler.draw_text_rel("Adrian Belz, Louis Rosewich, Jan Scharschmidt", 200, 590, 1, 0.5, 0.5, 1, 1, Gosu::Color::WHITE);
         }
         if (spielAuswahl == 1) 
         {
