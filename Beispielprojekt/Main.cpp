@@ -14,7 +14,8 @@ class GameWindow : public Gosu::Window
     Gosu::Image Asteroid;
     Gosu::Image Logo;
     Gosu::Image Raumschiff;
-    Gosu::Font exitgame = { 30 };                              
+    Gosu::Font exitgame = { 30 };   
+    Gosu::Font entwickler = { 20 };
     Gosu::Font auswahlSpaceInvaders = {30};       
     Gosu::Font anzeigeScore = { 30 };
     Gosu::Font anzeigeScoreNichtZerstoert = { 30 };
@@ -155,7 +156,9 @@ public:
         if (spielAuswahl == 0) {
             SpaceHintergrund.draw(0, 0, 0, 1.0, 1.0);
             Logo.draw(40, 0, 1, 1.0, 1.0);                                                                          // Menü beim Start des Spiels  
-            auswahlSpaceInvaders.draw_text_rel("Spielen", 515, 500, 1, 0.5, 0.5, 1, 1, Gosu::Color::GREEN);                                                                 
+            auswahlSpaceInvaders.draw_text_rel("Spielen", 500, 450, 1, 0.5, 0.5, 1, 1, Gosu::Color::WHITE);
+            exitgame.draw_text_rel("Beenden", 500, 500, 1, 0.5, 0.5, 1, 1, Gosu::Color::WHITE);
+            entwickler.draw_text_rel(" Adrian Belz, Louis Rosewich, Jan Scharschmidt", 200, 590, 1, 0.5, 0.5, 1, 1, Gosu::Color::WHITE);
         }
         if (spielAuswahl == 1) 
         {
@@ -195,11 +198,15 @@ public:
         mausY = input().mouse_y();
 
         if (spielAuswahl == 0) {
-            if (mausX >= 430 && mausX <= 600 && mausY >= 400 && mausY <= 600 && input().down(Gosu::Button::MS_LEFT))   // Abfrage ob Spielen im Menü gedrückt wurde
+            if (mausX >= 400 && mausX <= 600 && mausY >= 430 && mausY <= 460 && input().down(Gosu::Button::MS_LEFT))   // Abfrage ob Spielen im Menü gedrückt wurde
             {   
                 spielAuswahl = 1;                                                                                                
                 Spielen = true;
                 restart_game();
+            }
+            else if (mausX >= 400 && mausX <= 600 && mausY >= 480 && mausY <= 510 && input().down(Gosu::Button::MS_LEFT))
+            {
+                exit(1);
             }
         }
 
@@ -241,7 +248,7 @@ public:
                 return;
             }
             else if (mausX >= 900 && mausX <= 1000 && mausY >= 0 && mausY <= 100 && input().down(Gosu::Button::MS_LEFT)) {       //Spiel beenden
-                exit(3);
+                exit(1);
             }
             if (RaumschiffX > 1000 || RaumschiffX< 0)                                                                            // Abfrage, ob man außerhalb den Bildschirms geflogen ist falls ja Game Over
             getroffen = true;
