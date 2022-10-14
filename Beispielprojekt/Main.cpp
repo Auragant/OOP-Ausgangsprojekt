@@ -39,6 +39,7 @@ class GameWindow : public Gosu::Window
     int AsteroidenAnzahl = 0;
     double schussSpeed = 7;
     int schussZahl;
+    bool fullscreen = false;
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 public:
@@ -169,7 +170,6 @@ public:
                     if (Asteroiden.at(ast).hit == false) {
                         graphics().draw_rect(Asteroiden.at(ast).AsteroidX, Asteroiden.at(ast).AsteroidY, Asteroiden.at(ast).AsteroidBreite, Asteroiden.at(ast).AsteroidHoehe, Asteroiden.at(ast).AsteroidFarbe, Asteroiden.at(ast).AsteroidPos);    // Blendet die Asteroiden ein
                         Asteroid.draw((Asteroiden.at(ast).AsteroidX - 10), (Asteroiden.at(ast).AsteroidY-30), Asteroiden.at(ast).AsteroidPos,0.5, 0.5);         
-
                     }
                 }
                 for (int st = 0; st < schuesse.size(); st++) {
@@ -182,7 +182,6 @@ public:
                 graphics().draw_quad(400, 270, Gosu::Color::RED, 400, 330, Gosu::Color::RED, 600, 330, Gosu::Color::RED, 600, 270, Gosu::Color::RED, 1);
                 anzeigeRestart.draw_text_rel("Restart", 500, 300, 2, 0.5, 0.5, 2, 2, Gosu::Color::WHITE);                                                           // Zeigt den Restart-und Exit-Knopf wenn man getroffen wurde
                 exitgame.draw_text_rel("Exit", 970, 20, 2, 0.5, 0.5, 1, 1, Gosu::Color::RED);
-            
             }
         }
        
@@ -201,7 +200,6 @@ public:
                 spielAuswahl = 1;                                                                                                
                 Spielen = true;
                 restart_game();
-               
             }
         }
 
