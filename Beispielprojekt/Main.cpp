@@ -10,6 +10,10 @@ using namespace std;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class GameWindow : public Gosu::Window
 { 
+    Gosu::Song hintergrundmusik;
+    Gosu::Sample restartSound;
+    Gosu::Sample explosionSound;
+    Gosu::Sample getroffenSound;
     Gosu::Image SpaceHintergrund;
     Gosu::Image Asteroid;
     Gosu::Image Logo;
@@ -44,7 +48,7 @@ class GameWindow : public Gosu::Window
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 public:
-    GameWindow() : Window(1000, 600), Raumschiff("raumschiff.png"),SpaceHintergrund("weltraum.png"), Asteroid("asteroid.png"), Logo("logo.png")
+    GameWindow() : Window(1000, 600,true), Raumschiff("raumschiff.png"),SpaceHintergrund("weltraum.png"), Asteroid("asteroid.png"), Logo("logo.png"), explosionSound("explosion1.wav"), getroffenSound("gameover1.wav"), restartSound("restart.wav"), hintergrundmusik("song2.wav")
     {
         set_caption("Space Invaders");
     }
@@ -110,6 +114,7 @@ public:
             {
                 getroffen = true;
                 Asteroiden.at(ast).hit = true;
+                getroffenSound.play(2);
                 break;
             }
             else if (Asteroiden.at(ast).AsteroidX >= 600)          // Prüft ob der Asteroid aus dem Bildschirm fliegt
@@ -125,6 +130,7 @@ public:
                         Score++;
                         Asteroiden.at(ast).hit = true;
                         schuesse.at(st).existent = false;
+                        explosionSound.play(2);
                     }                      
                     else if (schuesse.at(st).SchussX <= 0)         // Prüft ob ein Schuss aus dem Bildschirm fliegt
                     {
@@ -153,6 +159,7 @@ public:
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     void draw() override
     {
+        hintergrundmusik.play(true);
         if (spielAuswahl == 0) {
             SpaceHintergrund.draw(0, 0, 0, 1.0, 1.0);
             Logo.draw(40, 0, 1, 1.0, 1.0);                                                                          // Menü beim Start des Spiels  
@@ -245,13 +252,17 @@ public:
             else if (mausX >= 410 && mausX <= 590 && mausY >= 270 && mausY <= 330 && input().down(Gosu::Button::MS_LEFT)) {       // Restart Knopf wurde betätigt
                 restart_game();  
                 getroffen = false;
+                restartSound.play(2);
                 return;
             }
             else if (mausX >= 900 && mausX <= 1000 && mausY >= 0 && mausY <= 100 && input().down(Gosu::Button::MS_LEFT)) {       //Spiel beenden
                 exit(1);
             }
-            if (RaumschiffX > 1000 || RaumschiffX< 0)                                                                            // Abfrage, ob man außerhalb den Bildschirms geflogen ist falls ja Game Over
-            getroffen = true;
+            if (RaumschiffX > 1000 || RaumschiffX < 0)// Abfrage, ob man außerhalb den Bildschirms geflogen ist falls ja Game Over
+            {
+                getroffen = true;
+                getroffenSound.play(2);
+            }
         }
     }
 };
