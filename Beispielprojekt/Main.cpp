@@ -114,7 +114,7 @@ public:
             {
                 getroffen = true;
                 Asteroiden.at(ast).hit = true;
-                getroffenSound.play(2);
+                getroffenSound.play(3);
                 break;
             }
             else if (Asteroiden.at(ast).AsteroidX >= 600)          // Prüft ob der Asteroid aus dem Bildschirm fliegt
@@ -123,6 +123,11 @@ public:
                 speedIncrease = true;
                 Asteroiden.at(ast).hit = true;
             }
+            /*else if (RaumschiffX > 1000 || RaumschiffX < 0)  // Abfrage, ob man außerhalb den Bildschirms geflogen ist falls ja Game Over
+            {
+                getroffen = true;
+                getroffenSound.play();
+            }*/
             else {                                                 // Prüft ob ein Schuss einen Asteroiden getroffen hat
                 for (int st = 0; st < schuesse.size(); st++) {
                     if (schuesse.at(st).SchussX >= Asteroiden.at(ast).AsteroidX && schuesse.at(st).SchussX <= Asteroiden.at(ast).AsteroidX + Asteroiden.at(ast).AsteroidHoehe
@@ -130,7 +135,7 @@ public:
                         Score++;
                         Asteroiden.at(ast).hit = true;
                         schuesse.at(st).existent = false;
-                        explosionSound.play(2);
+                        explosionSound.play(3);
                     }                      
                     else if (schuesse.at(st).SchussX <= 0)         // Prüft ob ein Schuss aus dem Bildschirm fliegt
                     {
@@ -159,7 +164,6 @@ public:
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     void draw() override
     {
-        hintergrundmusik.play(true);
         if (spielAuswahl == 0) {
             SpaceHintergrund.draw(0, 0, 0, 1.0, 1.0);
             Logo.draw(40, 0, 1, 1.0, 1.0);                                                                          // Menü beim Start des Spiels  
@@ -172,7 +176,7 @@ public:
             SpaceHintergrund.draw(0, 0, 0, 1.0, 1.0);
             string score = to_string(Score);
             string nothit = to_string(ScoreNichtZerstoert);
-            anzeigeScore.draw_text_rel("Score: " + score, 0, 0, 2, 0, 0, 1, 1, Gosu::Color::GREEN);                // Blendet den Score oben links ein
+            anzeigeScore.draw_text_rel("Score: " + score, 0, 0, 2, 0, 0, 1, 1, Gosu::Color::RED);                // Blendet den Score oben links ein
             
             if (Spielen) {
                 Raumschiff.draw_rot(RaumschiffX, RaumschiffY, 2, rotation, 0.5, 0.5,0.1, 0.1);                    // Blendet das Raumschiff ein
@@ -189,8 +193,7 @@ public:
                 }
             }
             if (getroffen) {
-                graphics().draw_quad(400, 270, Gosu::Color::RED, 400, 330, Gosu::Color::RED, 600, 330, Gosu::Color::RED, 600, 270, Gosu::Color::RED, 1);
-                anzeigeRestart.draw_text_rel("Restart", 500, 300, 2, 0.5, 0.5, 2, 2, Gosu::Color::WHITE);                                                           // Zeigt den Restart-und Exit-Knopf wenn man getroffen wurde
+                anzeigeRestart.draw_text_rel("Restart", 500, 300, 2, 0.5, 0.5, 2, 2, Gosu::Color::RED);                                                           // Zeigt den Restart-und Exit-Knopf wenn man getroffen wurde
                 exitgame.draw_text_rel("Exit", 970, 20, 2, 0.5, 0.5, 1, 1, Gosu::Color::RED);
             }
         }
@@ -220,6 +223,7 @@ public:
        
         if (spielAuswahl == 1)
         {
+            hintergrundmusik.play(true);
             if (!getroffen)                                                                             // Alle 5 Punkte wird die Geschwindigkeit erhöht
             {
                 if (Score % speedIncreaseAt == 0 && speedIncrease) {            
@@ -229,11 +233,11 @@ public:
                 AsteroidenAnzahl--;
                 schussZahl++;
                 
-                if (input().down(Gosu::Button::KB_LEFT) || input().down(Gosu::Button::KB_A)) 
+                if ((input().down(Gosu::Button::KB_LEFT) || input().down(Gosu::Button::KB_A)) && RaumschiffX > 30 ) 
                 {
                     RaumschiffX -= (SpaceSpeed + 2);                                                      // Steuerung des Raumschiffs nach links                                                
                 }
-                else if (input().down(Gosu::Button::KB_RIGHT) || input().down(Gosu::Button::KB_D)) 
+                else if ((input().down(Gosu::Button::KB_RIGHT) || input().down(Gosu::Button::KB_D)) && RaumschiffX < 970)
                 {
                     RaumschiffX += SpaceSpeed + 2;                                                        // Steuerung des Raumschiffs nach rechts                                                  
                 }
@@ -252,16 +256,16 @@ public:
             else if (mausX >= 410 && mausX <= 590 && mausY >= 270 && mausY <= 330 && input().down(Gosu::Button::MS_LEFT)) {       // Restart Knopf wurde betätigt
                 restart_game();  
                 getroffen = false;
-                restartSound.play(2);
+                restartSound.play(3);
+                hintergrundmusik.play(true);
                 return;
             }
             else if (mausX >= 900 && mausX <= 1000 && mausY >= 0 && mausY <= 100 && input().down(Gosu::Button::MS_LEFT)) {       //Spiel beenden
                 exit(1);
             }
-            if (RaumschiffX > 1000 || RaumschiffX < 0)// Abfrage, ob man außerhalb den Bildschirms geflogen ist falls ja Game Over
+            if (getroffen)
             {
-                getroffen = true;
-                getroffenSound.play(2);
+                hintergrundmusik.stop();
             }
         }
     }
