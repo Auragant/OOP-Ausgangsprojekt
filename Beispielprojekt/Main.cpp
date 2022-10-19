@@ -22,6 +22,7 @@ class GameWindow : public Gosu::Window
     Gosu::Font entwickler = { 20 };
     Gosu::Font auswahlSpaceInvaders = {30};       
     Gosu::Font anzeigeScore = { 30 };
+    Gosu::Font anzeigeHighscore = { 30 };
     Gosu::Font anzeigeScoreNichtZerstoert = { 30 };
     Gosu::Font anzeigeRestart = { 60 };
     Gosu::Font anzeigeStart = { 30 };
@@ -43,6 +44,7 @@ class GameWindow : public Gosu::Window
     bool speedIncrease = false;
     bool getroffen;
     bool fullscreen = false;
+    int highscore =0;
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 public:
@@ -182,11 +184,18 @@ public:
                     graphics().draw_rect(schuesse.at(st).SchussX, schuesse.at(st).SchussY, schuesse.at(st).SchussBreite, schuesse.at(st).SchussHoehe, schuesse.at(st).SchussFarbe, schuesse.at(st).SchussHoehe);   // Blendet die Schüsse ein
                 }
             }
+            if (highscore < Score)
+            {
+                highscore = Score;
+            }
             if (getroffen) 
             {
+                string Highscore = to_string(highscore);
+                anzeigeHighscore.draw_text_rel("Highscore: " + Highscore, 425, 0, 2, 0, 0, 1, 1, Gosu::Color::RED);
                 anzeigeRestart.draw_text_rel("Restart", 500, 300, 2, 0.5, 0.5, 1, 1, Gosu::Color::RED);                                                           // Zeigt den Restart-und Exit-Knopf wenn man getroffen wurde
                 exitgame.draw_text_rel("Exit", 970, 20, 2, 0.5, 0.5, 1, 1, Gosu::Color::RED);
             }
+
         }
        
     }
