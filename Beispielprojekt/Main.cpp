@@ -101,10 +101,7 @@ public:
         }
     }
     void FunktionenObjekte() 
-    {                 
-        vector<Asteorid> hilfsvector;
-        vector<Schuss> hilfSchuss;
-        bool AstRaus = false;  
+    {                   
         for (int ast = 0; ast < Asteroiden.size(); ast++) 
         {   
             
