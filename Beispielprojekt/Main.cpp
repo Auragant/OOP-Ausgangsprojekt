@@ -32,7 +32,7 @@ class GameWindow : public Gosu::Window
     double mausY;
     const double RaumschiffY = 550;                                                     
     double  RaumschiffX = 500;
-    double SpeedIncreaseFaktor = 1.08;
+    double SpeedIncreaseFaktor = 1.1;
     double SpaceSpeed = 3;
     double schussSpeed = 7;
     int spielAuswahl = 0;   
@@ -218,8 +218,6 @@ public:
                 exit(1);
             }
         }
-
-       
         if (spielAuswahl == 1)
         {
             hintergrundmusik.play(true);
