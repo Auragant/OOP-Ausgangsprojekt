@@ -33,7 +33,7 @@ class GameWindow : public Gosu::Window
     const double RaumschiffY = 550;                                                     
     double  RaumschiffX = 500;
     double SpeedIncreaseFaktor = 1.1;
-    double SpaceSpeed = 3;
+    double Speed = 3;
     double schussSpeed = 7;
     int spielAuswahl = 0;   
     int rotation = 0;
@@ -58,7 +58,7 @@ public:
         schuesse.clear();
         RaumschiffX = 500;
         Score = 0;
-        SpaceSpeed = 3;
+        Speed = 3;
         getroffen = false;
         AsteroidenAnzahl = 0;
         schussSpeed = 7;
@@ -149,7 +149,7 @@ public:
     {
         for (Asteorid& ast : Asteroiden)
         {
-           ast.AsteroidY += SpaceSpeed; 
+           ast.AsteroidY += Speed; 
            
         }
     }
@@ -225,7 +225,7 @@ public:
             {
                 if (Score % speedIncreaseAt == 0 && speedIncrease) 
                 {            
-                    SpaceSpeed = SpaceSpeed * SpeedIncreaseFaktor;          
+                    Speed = Speed * SpeedIncreaseFaktor;          
                     speedIncrease = false;
                 }
                 AsteroidenAnzahl--;
@@ -233,11 +233,11 @@ public:
 
                 if ((input().down(Gosu::Button::KB_LEFT) || input().down(Gosu::Button::KB_A)) && RaumschiffX > 30 )  // Steuerung des Raumschiffs nach links
                 {
-                    RaumschiffX -= (SpaceSpeed + 2);                                                                                                     
+                    RaumschiffX -= (Speed + 2);                                                                                                     
                 }
                 if ((input().down(Gosu::Button::KB_RIGHT) || input().down(Gosu::Button::KB_D)) && RaumschiffX < 970) // Steuerung des Raumschiffs nach rechts 
                 {
-                    RaumschiffX += SpaceSpeed + 2;                                                                                                        
+                    RaumschiffX += Speed + 2;                                                                                                        
                 }
                 if (AsteroidenAnzahl <= 1)     // verlangsamt das Spawnen der Asteroiden
                 {
