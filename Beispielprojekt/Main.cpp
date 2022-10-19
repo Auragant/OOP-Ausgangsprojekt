@@ -181,7 +181,7 @@ public:
             {
                 if (schuesse.at(st).existent) 
                 {
-                    graphics().draw_rect(schuesse.at(st).SchussX, schuesse.at(st).SchussY, schuesse.at(st).SchussBreite, schuesse.at(st).SchussHoehe, schuesse.at(st).SchussFarbe, schuesse.at(st).SchussHoehe);   // Blendet die Schüsse ein
+                    graphics().draw_rect(schuesse.at(st).SchussX, schuesse.at(st).SchussY, schuesse.at(st).SchussBreite, schuesse.at(st).SchussHoehe, schuesse.at(st).SchussFarbe, schuesse.at(st).SchussPos);   // Blendet die Schüsse ein
                 }
             }
             if (highscore < Score)
